@@ -29,4 +29,4 @@ A7="FLUSH PRIVILEGES;"
 
 SQL="${A1}${A2}${A3}${A4}${A5}${A6}${A7}"
 
-mysql -u root -p -e "$SQL"
+mysql -h 158.69.78.239 -u root -p -e "$SQL"
