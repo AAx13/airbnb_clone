@@ -1,12 +1,23 @@
+import peewee
 from peewee import *
-import config
+from config import *
+from datetime import *
 
-database = peewee.MySQLDatabase(config.DATABASE['database'],
-host=config.DATABASE['host'],
-user=config.DATABASE['user'],
-port=config.DATABASE['port'],
-charset=config.DATABASE['charset'],
-password=config.DATABASE['password'])
+database = MySQLDatabase(DATABASE['database'],
+    host=DATABASE['host'],
+    user=DATABASE['user'],
+    port=DATABASE['port'],
+    charset=DATABASE['charset'],
+    passwd=DATABASE['password'])
 
 class BaseModel(peewee.Model):
-    id = PrimaryKey(Unique)
+    id = PrimaryKeyField(unique=True)
+    created_at = DateTimeField(default=datetime.now, formats='%Y/%M/%d %H:%M:%S')
+    updated_at = DateTimeField(default=datetime.now, formats='%Y/%M/%d %H:%M:%S')
+
+    def save(self, *args, **kwargs):
+        self.update_at = datetime.now()
+
+    class Meta():
+        database = database
+        order_by = ("id", )
