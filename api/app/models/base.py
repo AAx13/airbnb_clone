@@ -11,7 +11,7 @@ database = MySQLDatabase(DATABASE['database'],
     charset=DATABASE['charset'],
     passwd=DATABASE['password'])
 
-''' BaseModel class inherits from peewee.Model among the declared public class attributes we have,
+''' BaseModel class inherits from peewee.Model. Among the declared public class attributes we have,
 id: which returns a PrimaryKeyField object giving this field a unique id whenever a table is created.
 created_at: returns the current date and time a table is created.
 updated_at: returns the current date and time a table is updated.
