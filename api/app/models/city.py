@@ -1,3 +1,5 @@
+import peewee
+from peewee import *
 from base import *
 from state import *
 
