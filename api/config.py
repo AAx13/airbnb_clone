@@ -21,7 +21,7 @@ if env_var == 'development':
                  'port': '3306',
                  'charset': 'utf8',
                  'password': os.environ.get('AIRBNB_DATABASE_PWD_DEV')}
-    
+
 elif env_var == 'production':
     DEBUG = False
     HOST = '0.0.0.0'
@@ -32,6 +32,3 @@ elif env_var == 'production':
                  'port': '3306',
                  'charset': 'utf8',
                  'password': os.environ.get('AIRBNB_DATABASE_PWD_PROD')}
-                 
-                 
-

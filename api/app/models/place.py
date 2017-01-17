@@ -5,7 +5,7 @@ from base import *
 class Place(BaseModel):
     owner = ForeignKeyField(User, related_name='places')
     city = ForeignKeyField(City, related_name='places')
-    name = CharField(max_length=128 null=False)
+    name = CharField(max_length=128, null=False)
     description = TextField()
     number_rooms = IntegerField(default=0)
     number_bathrooms = IntegerField(default=0)
@@ -13,4 +13,3 @@ class Place(BaseModel):
     price_by_night = IntegerField(default=0)
     latitude = FloatField()
     longitude = FloatField()
-    
