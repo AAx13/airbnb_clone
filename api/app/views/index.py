@@ -3,8 +3,6 @@ from flask import Request, Response
 from datetime import *
 from flask_json import as_json
 from app.models.base import BaseModel
-from app.models import *
-import MySQLdb
 
 @app.route('/', methods=["GET"])
 @as_json
