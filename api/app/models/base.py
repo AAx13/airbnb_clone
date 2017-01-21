@@ -1,10 +1,10 @@
 import peewee
 from peewee import *
 from config import *
-from datetime import *
+from datetime import datetime
 
 ''' Database variable utilizes MySQLDatabase method to draw database information along with configurations from config.py '''
-database = MySQLDatabase(DATABASE['database'],
+db = MySQLDatabase(DATABASE['database'],
     host=DATABASE['host'],
     user=DATABASE['user'],
     port=DATABASE['port'],
@@ -17,6 +17,7 @@ created_at: returns the current date and time a table is created.
 updated_at: returns the current date and time a table is updated.
 '''
 class BaseModel(peewee.Model):
+    database = db
     id = PrimaryKeyField(unique=True)
     created_at = DateTimeField(default=datetime.now, formats='%Y/%M/%d %H:%M:%S')
     updated_at = DateTimeField(default=datetime.now, formats='%Y/%M/%d %H:%M:%S')
@@ -31,5 +32,5 @@ class BaseModel(peewee.Model):
         #return super(BaseModel, self).save(self, *args, **kwargs) not 100% sure what super() does yet
 
     class Meta():
-        database = database
+        database = db
         order_by = ("id", )

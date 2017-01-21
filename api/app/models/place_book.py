@@ -1,4 +1,6 @@
 import peewee
+from place import Place
+from user import User
 from peewee import *
 from base import *
 
@@ -8,4 +10,3 @@ class PlaceBook(BaseModel):
     is_validated = BooleanField(default=False)
     date_start = DateTimeField(null=False)
     number_nights = IntegerField(default=1)
-    

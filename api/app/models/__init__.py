@@ -1,10 +1,8 @@
-__all__ = [
-    "amenity",
-    "city",
-    "place",
-    "place_amenity",
-    "place_book",
-    "state",
-    "user",
-    "base",
-    ]
+__all__ = ["amenity",
+           "base",
+           "city",
+           "place_amenity",
+           "place_book",
+           "place",
+           "state",
+           "user"]

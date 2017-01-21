@@ -1,10 +1,10 @@
-import json
-from flask import Request
-from flask import Response
-from datetime import *
 from app import app
-from flask_json import *
-from app.models.base import *
+from flask import Request, Response
+from datetime import *
+from flask_json import as_json
+from app.models.base import BaseModel
+from app.models import *
+import MySQLdb
 
 @app.route('/', methods=["GET"])
 @as_json
@@ -21,11 +21,11 @@ def index():
 
 @app.before_request
 def before_request():
-    database.connect()
+    BaseModel.database.connect()
 
 @app.after_request
 def after_request(response):
-    database.close()
+    BaseModel.database.close()
     return response
 
 @app.errorhandler(404)
