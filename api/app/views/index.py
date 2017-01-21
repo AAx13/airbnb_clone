@@ -4,6 +4,7 @@ from flask import Request, Response
 from datetime import *
 from flask_json import as_json, jsonify
 
+
 @app.route('/', methods=["GET"])
 @as_json
 def index():
