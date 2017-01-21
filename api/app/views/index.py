@@ -1,8 +1,8 @@
 from app import app
+from app.models.base import *
 from flask import Request, Response
 from datetime import *
-from flask_json import as_json
-from app.models.base import BaseModel
+from flask_json import as_json, jsonify
 
 @app.route('/', methods=["GET"])
 @as_json
@@ -19,18 +19,19 @@ def index():
 
 @app.before_request
 def before_request():
-    BaseModel.database.connect()
+    db.connect()
 
 @app.after_request
 def after_request(response):
-    BaseModel.database.close()
+    db.close()
     return response
 
 @app.errorhandler(404)
-@as_json
-def not_found():
+def not_found(error):
     data = {
         'code': 404,
         'msg': "not found"
     }
-    return data
+    error = jsonify(data)
+    error.status_code = 404
+    return error

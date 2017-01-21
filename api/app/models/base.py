@@ -17,7 +17,6 @@ created_at: returns the current date and time a table is created.
 updated_at: returns the current date and time a table is updated.
 '''
 class BaseModel(peewee.Model):
-    database = db
     id = PrimaryKeyField(unique=True)
     created_at = DateTimeField(default=datetime.now, formats='%Y/%M/%d %H:%M:%S')
     updated_at = DateTimeField(default=datetime.now, formats='%Y/%M/%d %H:%M:%S')

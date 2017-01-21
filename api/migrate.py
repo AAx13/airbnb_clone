@@ -1,7 +1,7 @@
 import peewee
 from peewee import *
 from app.models import *
+from app.models.base import *
 
-def create_tables():
-    BaseModel.database.connect()
-    BaseModel.database.create_tables([Amenity, City, PlaceAmenities, PlaceBook, State, User, Place])
+db.connect()
+db.create_tables([Amenity, City, PlaceAmenities, PlaceBook, State, User, Place])
