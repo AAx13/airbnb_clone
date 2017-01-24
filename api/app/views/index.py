@@ -5,7 +5,7 @@ from datetime import *
 from flask_json import as_json, jsonify
 
 
-@app.route('/', methods=["GET"])
+@app.route('/', methods=['GET'])
 @as_json
 def index():
     utc = datetime.utcnow()

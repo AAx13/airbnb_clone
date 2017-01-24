@@ -27,8 +27,7 @@ class BaseModel(peewee.Model):
     '''
     def save(self, *args, **kwargs):
         self.updated_at = datetime.now()
-        return method.save(self, *args, **kwargs)
-        #return super(BaseModel, self).save(self, *args, **kwargs) not 100% sure what super() does yet
+        return super(BaseModel, self).save(*args, **kwargs)
 
     class Meta():
         database = db
