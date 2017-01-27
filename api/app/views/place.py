@@ -1,6 +1,24 @@
 from app import app
 
-@app.route()
+@app.route('/places', methods=['GET', 'POST'])
+def places():
+
+    if request.method == 'GET':
+
+        place_query = Place.select()
+        res = [i.to_hash() for i in place_query]
+
+        if res:
+            return jsonify(res)
+        else:
+            error = {'error': 'No results found'}
+            res = jsonify(output)
+            res.status_code = 404
+            return res
+
+    elif request.method == 'POST':
+
+        
 
 
 
