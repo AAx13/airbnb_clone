@@ -10,8 +10,8 @@ class City(BaseModel):
     def to_hash(self):
         hash = {
             'id': self.id,
-            'created_at': self.created_at,
-            'updated_at': self.updated_at,
+            'created_at': self.created_at.strftime("%Y/%m/%d %H:%M:%S"),
+            'updated_at': self.updated_at.strftime("%Y/%m/%d %H:%M:%S"),
             'name': self.name,
             'state_id': self.state_id
         }

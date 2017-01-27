@@ -1,6 +1,5 @@
 from app import app
 from app.models.base import *
-from flask import Request, Response
 from datetime import *
 from flask_json import as_json, jsonify
 

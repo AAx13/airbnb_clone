@@ -16,6 +16,7 @@ id: which returns a PrimaryKeyField object giving this field a unique id wheneve
 created_at: returns the current date and time a table is created.
 updated_at: returns the current date and time a table is updated.
 '''
+
 class BaseModel(peewee.Model):
     id = PrimaryKeyField(unique=True)
     created_at = DateTimeField(default=datetime.now, formats='%Y/%M/%d %H:%M:%S')
@@ -23,7 +24,6 @@ class BaseModel(peewee.Model):
 
     '''
     When this method is called, it will update current date and time to updated_at
-    attribute before being called by its parent class.
     '''
     def save(self, *args, **kwargs):
         self.updated_at = datetime.now()
