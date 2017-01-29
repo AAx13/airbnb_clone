@@ -14,12 +14,12 @@ class PlaceBook(BaseModel):
     def to_hash(self):
         hash = {
             'id': self.id,
-            'created_at': self.created_at,
-            'updated_at': self.updated_at,
+            'created_at': self.created_at.strftime("%Y/%m/%d %H:%M:%S"),
+            'updated_at': self.updated_at.strftime("%Y/%m/%d %H:%M:%S"),
             'place_id': self.place_id,
             'user_id': self.user_id,
             'is_validated': self.is_validated,
-            'date_start': self.date_start,
+            'date_start': self.date_start.strftime("%Y/%m/%d %H:%M:%S"),
             'number_nights': self.number_nights
         }
         return hash
