@@ -30,11 +30,11 @@ def states():
             )
             return jsonify(state.to_hash())
 
-        else:
-            output = {'code': 10001, 'msg': 'State already exists'}
-            res = jsonify(output)
-            res.status_code = 409
-            return res
+
+        output = {'code': 10001, 'msg': 'State already exists'}
+        res = jsonify(output)
+        res.status_code = 409
+        return res
 
 @app.route('/states/<state_id>', methods=['GET', 'DELETE'])
 def states_id(state_id):

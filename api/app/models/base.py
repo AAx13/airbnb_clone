@@ -3,7 +3,7 @@ from peewee import *
 from config import *
 from datetime import datetime
 
-''' Database variable utilizes MySQLDatabase method to draw database information along with configurations from config.py '''
+''' Database variable utilizes MySQLDatabase method to draw database configurations from config.py '''
 db = MySQLDatabase(DATABASE['database'],
     host=DATABASE['host'],
     user=DATABASE['user'],

@@ -6,17 +6,17 @@ from flask_json import jsonify, request
 def get_users():
 
     if request.method == 'GET':
-        
+
         user_query = User.select()
         res = [i.to_hash() for i in user_query] #<---
 
         if res:
             return jsonify(res)
-        else:
-            output = {'error': 'No results found'}
-            res = jsonify(output)
-            res.status_code = 404
-            return res
+
+        output = {'error': 'No results found'}
+        res = jsonify(output)
+        res.status_code = 404
+        return res
 
     elif request.method == 'POST':
 
@@ -34,11 +34,11 @@ def get_users():
             user.set_password(request.form['password'])
             return jsonify(user.to_hash())
 
-        else:
-            output = {'code': 10000, 'msg': 'Email already exists'}
-            res = jsonify(output)
-            res.status_code = 409
-            return res
+
+        output = {'code': 10000, 'msg': 'Email already exists'}
+        res = jsonify(output)
+        res.status_code = 409
+        return res
 
 @app.route('/users/<user_id>', methods=['GET', 'PUT', 'DELETE'])
 def get_users_id(user_id):

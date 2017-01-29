@@ -17,7 +17,7 @@ def cities(state_id):
             output = {'error': 'No results found'}
             res = jsonify(output)
             res.status_code = 404
-            return res
+            return res 
 
     elif request.method == 'POST':
 
