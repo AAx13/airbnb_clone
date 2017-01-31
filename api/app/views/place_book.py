@@ -70,10 +70,10 @@ def update_book_by_id(place_id, book_id):
 
 
 @app.route('/places/<place_id>/books/<book_id>', methods=['DELETE'])
-def delete
+def delete_book(place_id, book_id):
 
-
-'''
-route /places/<place_id>/books/<book_id>:
-DELETE: delete book with id = book_id
-'''
+    book_query = PlaceBook.select().join(Place).where(PlaceBook.id == book_id, Place.id == place_id).get()
+    book_query.delete_instance()
+    book_query.save()
+    response = {'msg': 'Deleted book at id: ' + book_id}
+    return jsonify(response)
